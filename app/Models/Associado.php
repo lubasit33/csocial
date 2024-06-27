@@ -18,12 +18,17 @@ class Associado extends Model
 
     public function genero()
     {
-        return $this->genero ? 'feminino' : 'masculino';    
+        return $this->genero ? 'feminino' : 'masculino';
     }
 
     public function dataNascimento()
     {
         return date_format(date_create($this->data_nascimento), 'd/m/Y');
+    }
+
+    public function idade()
+    {
+        return date_format(date_create(now()), 'Y') - date_format(date_create($this->data_nascimento), 'Y');
     }
 
     public function contas()

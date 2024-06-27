@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [ContaController::class, 'index'])->name('index');
         Route::get('/create', [ContaController::class, 'create'])->name('create');
         Route::post('/', [ContaController::class, 'store'])->name('store');
-        // Route::get('/{id}', [ContaController::class, 'show'])->name('show');
+        Route::get('/{conta}', [ContaController::class, 'show'])->name('show');
         Route::get('/{conta}/edit', [ContaController::class, 'edit'])->name('edit');
         Route::put('/{conta}', [ContaController::class, 'update'])->name('update');
         // Route::delete('/{id}', [ContaController::class, 'destroy'])->name('destroy');
@@ -65,6 +65,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [CategoriaController::class, 'index'])->name('index');
         Route::get('/create', [CategoriaController::class, 'create'])->name('create');
         Route::post('/', [CategoriaController::class, 'store'])->name('store');
+        Route::get('/{categoria}', [CategoriaController::class, 'show'])->name('show');
         Route::get('/{categoria}/edit', [CategoriaController::class, 'edit'])->name('edit');
         Route::put('/{categoria}', [CategoriaController::class, 'update'])->name('update');
     });

@@ -37,6 +37,7 @@
             </div>
             <div class="row">
               <div class="update ml-auto mr-auto">
+                <a href="{{ route('categoria.index') }}" class="btn btn-warning btn-round">Cancelar</a>
                 <button type="submit" class="btn btn-primary btn-round">Cadastrar Categoria</button>
               </div>
             </div>

@@ -29,7 +29,7 @@ class AssociadoController extends Controller
 
     public function show(Associado $associado)
     {
-        $associado = $associado::with(['contas'])->get();
+        $associado = $associado::with(['contas'])->first();
 
         return view('app.associados.show', compact('associado'));
     }

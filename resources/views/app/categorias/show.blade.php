@@ -1,7 +1,7 @@
 @extends('app.layouts.dashboard')
 
-@section('title', 'Movimentos - CSocial')
-@section('movimento', 'active')
+@section('title', 'Categoria - CSocial')
+@section('categoria', 'active')
 
 @section('css')
 {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> --}}
@@ -18,41 +18,41 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Todos os Movimentos</h4>
-          <div class="text-right">
+          <h4 class="card-title"> Todos os {{ ucwords($categoria->nome) }}s</h4>
+          {{-- <div class="text-right">
             <a href="{{ route('movimento.create') }}" class="btn btn-success btn-round">Fazer Movimento</a>
-          </div>
+          </div> --}}
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table">
               <thead class=" text-primary">
+                <th>#</th>
                 <th>Valor</th>
                 <th>Data</th>
                 <th>Conta</th>
-                <th>Categoria</th>
                 <th>Titular</th>
                 <th>Avalista</th>
                 {{-- <th>Ações</th> --}}
               </thead>
               <tbody>
-                @forelse ($movimentos as $movimento)
+                @forelse ($categoria->movimentos as $key => $movimento)
                 <tr>
+                    <td>{{ ++$key }}</td>
                     <td>{{ $movimento->valor }}</td>
                     <td>{{ $movimento->dataMovimento() }}</td>
                     <td><a href="{{ route('conta.show', $movimento->conta_id) }}">{{ $movimento->conta->numero_conta }}</a></td>
-                    <td><a href="{{ route('categoria.show', $movimento->categoria_id) }}">{{ ucwords($movimento->categoria->nome) }}</a></td>
                     <td><a href="{{ route('associado.show', $movimento->conta->titular) }}">{{ ucwords($movimento->conta->oTitular->nome) }}</a></td>
                     <td><a href="{{ route('avalista.show', $movimento->conta->avalista_id) }}">{{ ucwords($movimento->conta->avalista->nome) }}</a></td>
                     {{-- <td>
-                      <a href="javascript:void(0);" class="btn btn-info">Ver</a>
+                      <a href="" class="btn btn-info btn-round">Ver</a>
                       <a href="{{ route('movimento.edit', $movimento->id) }}" class="btn btn-primary btn-round">Editar</a>
                       <a href="javascript:void(0);" class="btn btn-danger">Remover</a>
                     </td> --}}
                 </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">Não foram feitos movimentos ainda.</td>
+                        <td colspan="6" class="text-center">Não foram feitos {{ $categoria->nome }}s ainda.</td>
                     </tr>
                 @endforelse
               </tbody>

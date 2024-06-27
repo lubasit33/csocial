@@ -27,7 +27,7 @@ class ContaStoreValidationRequest extends FormRequest
             'numero_conta' => 'bail|required|string|min:11|max:11|unique:contas,numero_conta',
             'data_abertura' => 'bail|required|date|after:1990-01-01',
             'titular' => 'bail|required|integer|exists:associados,id',
-            'avalista' => 'bail|required|integer|exists:avalistas,id',
+            'avalista_id' => 'bail|required|integer|exists:avalistas,id',
         ];
     }
 

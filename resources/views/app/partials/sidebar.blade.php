@@ -1,12 +1,12 @@
 <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
-      <a href="javascript:void(0);" class="simple-text logo-mini">
+      <a href="{{ route('user.profile', Auth::user()->id) }}" class="simple-text logo-mini">
         <div class="logo-image-small">
           <img src="{{ asset('assets/img/default-avatar.png') }}">
         </div>
         <!-- <p>CT</p> -->
       </a>
-      <a href="javascript:void(0);" class="simple-text logo-normal">
+      <a href="{{ route('user.profile', Auth::user()->id) }}" class="simple-text logo-normal">
         {{ Auth::user()->name }}
         <!-- <div class="logo-image-big">
           <img src="../assets/img/logo-big.png">

@@ -21,7 +21,7 @@ class Conta extends Model
         return date_format(date_create($this->data_abertura), 'd/m/Y');
     }
 
-    public function associado()
+    public function oTitular()
     {
         return $this->belongsTo(Associado::class, 'titular', 'id');
     }

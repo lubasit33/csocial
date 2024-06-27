@@ -35,8 +35,8 @@
                 <tr>
                     <td>{{ ucwords($categoria->nome) }}</td>
                     <td>
+                        <a href="{{ route('categoria.show', $categoria->id)}}" class="btn btn-info btn-round">Ver</a>
                       <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-primary btn-round">Editar</a>
-                      {{-- <a href="javascript:void(0);" class="btn btn-danger">Remover</a> --}}
                     </td>
                 </tr>
                 @empty

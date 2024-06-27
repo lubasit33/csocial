@@ -9,7 +9,7 @@
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/css/paper-dashboard.css?v=2.0.1') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />   
+  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -225,10 +225,10 @@
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
- 
+
   <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
   <!--  Notifications Plugin    -->
-  <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
   <script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
 @endsection

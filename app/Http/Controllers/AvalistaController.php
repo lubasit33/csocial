@@ -29,7 +29,7 @@ class AvalistaController extends Controller
 
     public function show(Avalista $avalista)
     {
-        $avalista = $avalista::with(['contas'])->get();
+        $avalista = $avalista::with(['contas'])->first();
 
         return view('app.avalistas.show', compact('avalista'));
     }

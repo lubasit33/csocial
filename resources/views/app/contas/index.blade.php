@@ -31,20 +31,20 @@
                 <th>Data de Abertura</th>
                 <th>Titular</th>
                 <th>Avalista</th>
-                {{-- <th>Ações</th> --}}
+                <th>Ações</th>
               </thead>
               <tbody>
                 @forelse ($contas as $conta)
                 <tr>
                     <td>{{ $conta->numero_conta }}</td>
                     <td>{{ $conta->dataAbertura() }}</td>
-                    <td>{{ $conta->associado->nome }}</td>
-                    <td>{{ $conta->avalista->nome }}</td>
-                    {{-- <td>
-                      <a href="javascript:void(0);" class="btn btn-info btn-round">Ver</a>
-                      <a href="{{ route('conta.edit', $conta->id) }}" class="btn btn-primary btn-round">Editar</a>
-                      <a href="javascript:void(0);" class="btn btn-danger">Remover</a>
-                    </td> --}}
+                    <td><a href="{{ route('associado.show', $conta->titular) }}">{{ $conta->oTitular->nome }}</a></td>
+                    <td><a href="{{ route('avalista.show', $conta->avalista_id) }}">{{ $conta->avalista->nome }}</a></td>
+                    <td>
+                      <a href="{{ route('conta.show', $conta->id) }}" class="btn btn-info btn-round">Ver</a>
+                      {{-- <a href="{{ route('conta.edit', $conta->id) }}" class="btn btn-primary btn-round">Editar</a> --}}
+                      {{-- <a href="javascript:void(0);" class="btn btn-danger">Remover</a> --}}
+                    </td>
                 </tr>
                 @empty
                     <tr>

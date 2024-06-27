@@ -33,6 +33,17 @@ class ContaController extends Controller
         return redirect()->route('conta.index');
     }
 
+    public function show(Conta $conta)
+    {
+        $conta = $conta::with([
+            'oTitular.contas',
+            'avalista',
+            'movimentos.categoria',
+        ])->first();
+
+        return view('app.contas.show', compact('conta'));
+    }
+
     public function edit(Conta $conta)
     {
         return view('app.contas.edit', [

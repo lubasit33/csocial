@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContaValidationRequest;
-use App\Models\Associado;
-use App\Models\Avalista;
 use App\Models\Conta;
+use App\Models\Avalista;
+use App\Models\Associado;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
+use App\Http\Requests\ContaStoreValidationRequest;
+use App\Http\Requests\ContaUpdateValidationRequest;
 
 class ContaController extends Controller
 {
     public function index()
     {
         return view('app.contas.index', [
-            'contas' => Conta::all(),
+            'contas' => Conta::orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -26,9 +26,25 @@ class ContaController extends Controller
         ]);
     }
 
-    public function store(ContaValidationRequest $request)
+    public function store(ContaStoreValidationRequest $request)
     {
         Conta::create($request->all());
+
+        return redirect()->route('conta.index');
+    }
+
+    public function edit(Conta $conta)
+    {
+        return view('app.contas.edit', [
+            'conta' => $conta,
+            'avalistas' => Avalista::all(),
+            'associados' => Associado::all(),
+        ]);
+    }
+
+    public function update(ContaUpdateValidationRequest $request, Conta $conta)
+    {
+        $conta->update($request->all());
 
         return redirect()->route('conta.index');
     }

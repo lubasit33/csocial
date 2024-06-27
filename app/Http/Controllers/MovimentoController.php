@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MovimentoValidationRequest;
 use App\Models\Categoria;
 use App\Models\Conta;
 use App\Models\Movimento;
@@ -22,6 +23,13 @@ class MovimentoController extends Controller
             'contas' => Conta::all(),
             'categorias' => Categoria::all(),
         ]);
+    }
+
+    public function store(MovimentoValidationRequest $request)
+    {
+        Movimento::create($request->all());
+
+        return redirect()->route('movimento.index');
     }
 
 }

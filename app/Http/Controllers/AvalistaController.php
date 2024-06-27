@@ -17,7 +17,7 @@ class AvalistaController extends Controller
 
     public function create()
     {
-        return view('app.avalistas.create');  
+        return view('app.avalistas.create');
     }
 
     public function store(AvalistaValidationRequest $request)
@@ -26,5 +26,24 @@ class AvalistaController extends Controller
 
         return redirect()->route('avalista.index');
     }
-    
+
+    public function show(Avalista $avalista)
+    {
+        $avalista = $avalista::with(['contas'])->get();
+
+        return view('app.avalistas.show', compact('avalista'));
+    }
+
+    public function edit(Avalista $avalista)
+    {
+        return view('app.avalistas.edit', compact('avalista'));
+    }
+
+    public function update(AvalistaValidationRequest $request, Avalista $avalista)
+    {
+        $avalista->update($request->all());
+
+        return redirect()->route('avalista.index');
+    }
+
 }

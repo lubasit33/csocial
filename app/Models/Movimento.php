@@ -16,6 +16,11 @@ class Movimento extends Model
         'categoria_id',
     ];
 
+    public function dataMovimento()
+    {
+        return date_format(date_create($this->data_movimento), 'd/m/Y');
+    }
+
     public function conta()
     {
         return $this->belongsTo(Conta::class);
@@ -25,5 +30,5 @@ class Movimento extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
-    
+
 }

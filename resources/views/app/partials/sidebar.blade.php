@@ -27,17 +27,17 @@
                 <p>Associados</p>
             </a>
         </li>
+        <li class="@yield('conta')">
+            <a href="{{ route('conta.index') }}">
+              <i class="nc-icon nc-diamond"></i>
+              <p>Contas</p>
+            </a>
+          </li>
         <li class="@yield('avalista')">
             <a href="{{ route('avalista.index')}}">
                 <i class="nc-icon nc-single-02"></i>
                 <p>Avalistas</p>
             </a>
-        </li>
-        <li class="@yield('conta')">
-          <a href="{{ route('conta.index') }}">
-            <i class="nc-icon nc-diamond"></i>
-            <p>Contas</p>
-          </a>
         </li>
         <li class="@yield('movimento')">
           <a href="{{ route('movimento.index') }}">
@@ -45,6 +45,12 @@
             <p>Movimentos</p>
           </a>
         </li>
+        <li class="@yield('categoria')">
+            <a href="{{ route('categoria.index') }}">
+              <i class="nc-icon nc-money-coins"></i>
+              <p>Categorias</p>
+            </a>
+          </li>
         {{-- <li>
           <a href="./typography.html">
             <i class="nc-icon nc-caps-small"></i>

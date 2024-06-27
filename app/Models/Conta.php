@@ -16,9 +16,14 @@ class Conta extends Model
         'avalista_id',
     ];
 
+    public function dataAbertura()
+    {
+        return date_format(date_create($this->data_abertura), 'd/m/Y');
+    }
+
     public function associado()
     {
-        return $this->belongsTo(Associado::class, 'titular', 'id');    
+        return $this->belongsTo(Associado::class, 'titular', 'id');
     }
 
     public function avalista()
@@ -28,7 +33,7 @@ class Conta extends Model
 
     public function movimentos()
     {
-        return $this->hasMany(Movimento::class);    
+        return $this->hasMany(Movimento::class);
     }
 
 }

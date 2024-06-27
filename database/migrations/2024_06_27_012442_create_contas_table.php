@@ -15,7 +15,7 @@ class CreateContasTable extends Migration
     {
         Schema::create('contas', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_conta', 11);
+            $table->string('numero_conta', 11)->unique();
             $table->date('data_abertura');
             $table->foreignId('titular')
                 ->constrained('associados')

@@ -10,7 +10,7 @@
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/css/paper-dashboard.css?v=2.0.1') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />   
+  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -70,7 +70,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6 pr-1">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label>Data de Nascimento</label>
                   <input type="date" name="data_nascimento" class="form-control"  value="{{ old('data_nascimento') }}" required />
@@ -79,13 +79,13 @@
                   @enderror
                 </div>
               </div>
-              <div class="col-md-6 pr-1">
+              <div class="col-md-6">
                 <div class="form-group">
                     <label >Género</label>
                     <select class="form-control" name="genero" required >
                       <option selected disabled>Escolha um género</option>
                       @foreach (['Masculino', 'Feminino'] as $key => $genero)
-                      <option value="{{ $key }}">{{ $genero }}</option>
+                      <option value="{{ $key }}" {{ old('genero') == $key ? 'selected' : '' }}>{{ $genero }}</option>
                       @endforeach
                     </select>
                     @error('genero')
@@ -107,6 +107,7 @@
             </div>
             <div class="row">
               <div class="update ml-auto mr-auto">
+                  <a href="{{ route('associado.index') }}" class="btn btn-warning btn-round">Cancelar</a>
                 <button type="submit" class="btn btn-primary btn-round">Cadastrar Associado</button>
               </div>
             </div>
@@ -123,7 +124,7 @@
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
- 
+
   <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
   <!--  Notifications Plugin    -->
   <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>

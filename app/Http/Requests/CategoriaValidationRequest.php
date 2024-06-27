@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContaValidationRequest extends FormRequest
+class CategoriaValidationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class ContaValidationRequest extends FormRequest
     public function rules()
     {
         return [
-            'numero_conta' => 'bail|required|string|min:11|max:11',
-            'data_abertura' => 'bail|required|date|after:1990-01-01',
-            'titular' => 'bail',
-            'avalista' => 'bail',
+            'nome' => 'bail|required|string|min:2|max:12',
         ];
     }
 

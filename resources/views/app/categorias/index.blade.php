@@ -1,7 +1,7 @@
 @extends('app.layouts.dashboard')
 
-@section('title', 'Avalistas - CSocial')
-@section('avalista', 'active')
+@section('title', 'Categorias - CSocial')
+@section('categoria', 'active')
 
 @section('css')
 {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> --}}
@@ -18,9 +18,9 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Todos os Avalistas</h4>
+          <h4 class="card-title"> Todas as Categorias</h4>
           <div class="text-right">
-            <a href="{{ route('avalista.create') }}" class="btn btn-success btn-round">Cadastrar Avalista</a>
+            <a href="{{ route('categoria.create') }}" class="btn btn-success btn-round">Cadastrar Categoria</a>
           </div>
         </div>
         <div class="card-body">
@@ -28,27 +28,20 @@
             <table class="table">
               <thead class=" text-primary">
                 <th>Nome</th>
-                <th>Data de Início de Funções</th>
-                <th>Salário</th>
-                <th>Local de Trabalho</th>
                 <th>Ações</th>
               </thead>
               <tbody>
-                @forelse ($avalistas as $avalista)
+                @forelse ($categorias as $categoria)
                 <tr>
-                    <td>{{ $avalista->nome }}</td>
-                    <td>{{ $avalista->dataInicioFuncoes() }}</td>
-                    <td>{{ $avalista->salario }}</td>
-                    <td>{{ $avalista->local_trabalho }}</td>
+                    <td>{{ ucwords($categoria->nome) }}</td>
                     <td>
-                        <a href="{{ route('avalista.show', $avalista->id) }}" class="btn btn-info btn-round">Ver</a>
-                        <a href="{{ route('avalista.edit', $avalista->id) }}" class="btn btn-primary btn-round">Editar</a>
+                      <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-primary btn-round">Editar</a>
                       {{-- <a href="javascript:void(0);" class="btn btn-danger">Remover</a> --}}
                     </td>
                 </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">Não foram cadastrados avalistas ainda.</td>
+                        <td colspan="5" class="text-center">Não foram cadastradas categorias ainda.</td>
                     </tr>
                 @endforelse
               </tbody>

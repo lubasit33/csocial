@@ -25,20 +25,20 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [AssociadoController::class, 'index'])->name('index');
         Route::get('/create', [AssociadoController::class, 'create'])->name('create');
         Route::post('/', [AssociadoController::class, 'store'])->name('store');
-        // Route::get('/{id}', [AssociadoController::class, 'show'])->name('show');
-        Route::get('/{id}/edit', [AssociadoController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [AssociadoController::class, 'update'])->name('update');
-        Route::delete('/{id}', [AssociadoController::class, 'destroy'])->name('destroy');
+        Route::get('/{associado}', [AssociadoController::class, 'show'])->name('show');
+        Route::get('/{associado}/edit', [AssociadoController::class, 'edit'])->name('edit');
+        Route::put('/{associado}', [AssociadoController::class, 'update'])->name('update');
+        // Route::delete('/{associado}', [AssociadoController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['prefix' => 'avalista', 'as' => 'avalista.'], function() {
         Route::get('/', [AvalistaController::class, 'index'])->name('index');
         Route::get('/create', [AvalistaController::class, 'create'])->name('create');
         Route::post('/', [AvalistaController::class, 'store'])->name('store');
-        // Route::get('/{id}', [AvalistaController::class, 'show'])->name('show');
-        Route::get('/{id}/edit', [AvalistaController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [AvalistaController::class, 'update'])->name('update');
-        Route::delete('/{id}', [AvalistaController::class, 'destroy'])->name('destroy');
+        Route::get('/{avalista}', [AvalistaController::class, 'show'])->name('show');
+        Route::get('/{avalista}/edit', [AvalistaController::class, 'edit'])->name('edit');
+        Route::put('/{avalista}', [AvalistaController::class, 'update'])->name('update');
+        // Route::delete('/{id}', [AvalistaController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['prefix' => 'conta', 'as' => 'conta.'], function() {
@@ -46,9 +46,9 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/create', [ContaController::class, 'create'])->name('create');
         Route::post('/', [ContaController::class, 'store'])->name('store');
         // Route::get('/{id}', [ContaController::class, 'show'])->name('show');
-        Route::get('/{id}/edit', [ContaController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [ContaController::class, 'update'])->name('update');
-        Route::delete('/{id}', [ContaController::class, 'destroy'])->name('destroy');
+        Route::get('/{conta}/edit', [ContaController::class, 'edit'])->name('edit');
+        Route::put('/{conta}', [ContaController::class, 'update'])->name('update');
+        // Route::delete('/{id}', [ContaController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['prefix' => 'movimento', 'as' => 'movimento.'], function() {
@@ -65,10 +65,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [CategoriaController::class, 'index'])->name('index');
         Route::get('/create', [CategoriaController::class, 'create'])->name('create');
         Route::post('/', [CategoriaController::class, 'store'])->name('store');
-        // Route::get('/{id}', [CategoriaController::class, 'show'])->name('show');
-        Route::get('/{id}/edit', [CategoriaController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [CategoriaController::class, 'update'])->name('update');
-        Route::delete('/{id}', [CategoriaController::class, 'destroy'])->name('destroy');
+        Route::get('/{categoria}/edit', [CategoriaController::class, 'edit'])->name('edit');
+        Route::put('/{categoria}', [CategoriaController::class, 'update'])->name('update');
     });
 });
 

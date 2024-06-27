@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\OldPasswordMatchRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PasswordValidationRequest extends FormRequest
+class MovimentoValidationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +24,10 @@ class PasswordValidationRequest extends FormRequest
     public function rules()
     {
         return [
-            'old_password' => ['bail', 'required', 'string', new OldPasswordMatchRule],
-            'new_password' => 'bail|required|string|min:8|confirmed',
+            'valor' => 'bail|required|numeric|min:0',
+            'data_movimento' => 'bail|required|date',
+            'conta_id' => 'bail|required|integer|exists:contas,id',
+            'categoria_id' => 'bail|required|integer|exists:categorias,id',
         ];
     }
 

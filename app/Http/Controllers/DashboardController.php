@@ -14,7 +14,7 @@ class DashboardController extends Controller
     {
         return view('app.dashboard.index', [
             'categorias' => Categoria::get()->count(),
-            'movimentos' => Movimento::get()->count(),
+            'movimentos' => Movimento::pluck('valor')->sum(),
             'contas' => Conta::get()->count(),
             'avalistas' => Avalista::get()->count(),
         ]);

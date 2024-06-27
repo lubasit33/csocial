@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\OldPasswordMatchRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PasswordValidationRequest extends FormRequest
+class ContaUpdateValidationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +23,13 @@ class PasswordValidationRequest extends FormRequest
      */
     public function rules()
     {
+        $conta_id = $this->route('conta')->id;
+
         return [
-            'old_password' => ['bail', 'required', 'string', new OldPasswordMatchRule],
-            'new_password' => 'bail|required|string|min:8|confirmed',
+            'numero_conta' => "bail|required|string|min:11|max:11|unique:contas,numero_conta,{$conta_id}",
+            'data_abertura' => 'bail|required|date|after:1990-01-01',
+            'titular' => 'bail|required|integer|exists:associados,id',
+            'avalista_id' => 'bail|required|integer|exists:avalistas,id',
         ];
     }
 

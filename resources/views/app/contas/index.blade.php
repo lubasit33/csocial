@@ -37,7 +37,7 @@
                 @forelse ($contas as $conta)
                 <tr>
                     <td>{{ $conta->numero_conta }}</td>
-                    <td>{{ $conta->dataAbertura() }}</td>
+                    <td>{{ $conta->data_abertura }}</td>
                     <td>{{ $conta->associado->nome }}</td>
                     <td>{{ $conta->avalista->nome }}</td>
                     <td class="text-right">

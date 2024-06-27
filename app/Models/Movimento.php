@@ -21,7 +21,7 @@ class Movimento extends Model
         return $this->belongsTo(Conta::class);
     }
 
-    public function contegoria()
+    public function categoria()
     {
         return $this->belongsTo(Categoria::class);
     }

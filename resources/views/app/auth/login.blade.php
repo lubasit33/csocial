@@ -44,10 +44,10 @@
                             </span>
                         </label>
                     </div>
-                    
+
                     <div class="row">
                         <div class="update ml-auto mr-auto">
-                          <button type="submit" class="btn btn-primary btn-round">Entrar</button>
+                          <button type="submit" class="btn btn-primary">Entrar</button>
                         </div>
                       </div>
                     {{-- <button type="submit" class="btn btn-primary btn-round">Entrar</button> --}}

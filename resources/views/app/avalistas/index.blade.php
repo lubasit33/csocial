@@ -20,7 +20,7 @@
         <div class="card-header">
           <h4 class="card-title"> Todos os Avalistas</h4>
           <div class="text-right">
-            <a href="{{ route('avalista.create') }}" class="btn btn-success btn-round">Cadastrar Avalista</a>
+            <a href="{{ route('avalista.create') }}" class="btn btn-success">Cadastrar Avalista</a>
           </div>
         </div>
         <div class="card-body">
@@ -41,8 +41,8 @@
                     <td>{{ $avalista->salario }}</td>
                     <td>{{ $avalista->local_trabalho }}</td>
                     <td>
-                        <a href="{{ route('avalista.show', $avalista->id) }}" class="btn btn-info btn-round">Ver</a>
-                        <a href="{{ route('avalista.edit', $avalista->id) }}" class="btn btn-primary btn-round">Editar</a>
+                        <a href="{{ route('avalista.show', $avalista->id) }}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('avalista.edit', $avalista->id) }}" class="btn btn-primary">Editar</a>
                       {{-- <a href="javascript:void(0);" class="btn btn-danger">Remover</a> --}}
                     </td>
                 </tr>

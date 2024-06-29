@@ -20,7 +20,7 @@
         <div class="card-header">
           <h4 class="card-title"> Todas as Categorias</h4>
           <div class="text-right">
-            <a href="{{ route('categoria.create') }}" class="btn btn-success btn-round">Cadastrar Categoria</a>
+            <a href="{{ route('categoria.create') }}" class="btn btn-success">Cadastrar Categoria</a>
           </div>
         </div>
         <div class="card-body">
@@ -35,8 +35,8 @@
                 <tr>
                     <td>{{ ucwords($categoria->nome) }}</td>
                     <td>
-                        <a href="{{ route('categoria.show', $categoria->id)}}" class="btn btn-info btn-round">Ver</a>
-                      <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-primary btn-round">Editar</a>
+                        <a href="{{ route('categoria.show', $categoria->id)}}" class="btn btn-info">Ver</a>
+                      <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-primary">Editar</a>
                     </td>
                 </tr>
                 @empty

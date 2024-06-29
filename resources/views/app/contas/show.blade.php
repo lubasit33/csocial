@@ -70,7 +70,7 @@
                   <span class="text-muted"><small>{{ ucwords($conta->avalista->local_trabalho) }}</small></span>
                 </div>
                 <div class="col-md-3 col-3 text-right">
-                  <a href="{{ route('avalista.show', $conta->avalista_id) }}" class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></a>
+                  <a href="{{ route('avalista.show', $conta->avalista_id) }}" class="btn btn-sm btn-outline-success btn-icon"><i class="fa fa-envelope"></i></a>
                 </div>
               </div>
             </li>

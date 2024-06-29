@@ -110,8 +110,8 @@
             </div>
             <div class="row">
               <div class="update ml-auto mr-auto">
-                <a href="{{ route('conta.index') }}" class="btn btn-warning btn-round">Cancelar</a>
-                <button type="submit" class="btn btn-primary btn-round">Criar Conta</button>
+                <a href="{{ route('conta.index') }}" class="btn btn-warning">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Criar Conta</button>
               </div>
             </div>
           </form>

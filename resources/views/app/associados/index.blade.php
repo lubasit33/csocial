@@ -20,7 +20,7 @@
         <div class="card-header">
           <h4 class="card-title"> Todos os Associados</h4>
           <div class="text-right">
-            <a href="{{ route('associado.create') }}" class="btn btn-success btn-round">Cadastrar Associado</a>
+            <a href="{{ route('associado.create') }}" class="btn btn-success">Cadastrar Associado</a>
           </div>
         </div>
         <div class="card-body">
@@ -41,8 +41,8 @@
                     <td>{{ ucwords($associado->genero()) }}</td>
                     <td>{{ ucwords($associado->residencia) }}</td>
                     <td>
-                      <a href="{{ route('associado.show', $associado->id) }}" class="btn btn-info btn-round">Ver</a>
-                      <a href="{{ route('associado.edit', $associado->id) }}" class="btn btn-primary btn-round">Editar</a>
+                      <a href="{{ route('associado.show', $associado->id) }}" class="btn btn-info">Ver</a>
+                      <a href="{{ route('associado.edit', $associado->id) }}" class="btn btn-primary">Editar</a>
                       {{-- <a href="javascript:void(0);" class="btn btn-danger">Remover</a> --}}
                     </td>
                 </tr>

@@ -107,8 +107,8 @@
             </div>
             <div class="row">
               <div class="update ml-auto mr-auto">
-                  <a href="{{ route('associado.index') }}" class="btn btn-warning btn-round">Cancelar</a>
-                <button type="submit" class="btn btn-primary btn-round">Cadastrar Associado</button>
+                  <a href="{{ route('associado.index') }}" class="btn btn-warning">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Cadastrar Associado</button>
               </div>
             </div>
           </form>

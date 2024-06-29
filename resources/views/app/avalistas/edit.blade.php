@@ -69,8 +69,8 @@
             </div>
             <div class="row">
               <div class="update ml-auto mr-auto">
-                <a href="{{ route('avalista.index') }}" class="btn btn-warning btn-round">Cancelar</a>
-                <button type="submit" class="btn btn-primary btn-round">Actualizar Avalista</button>
+                <a href="{{ route('avalista.index') }}" class="btn btn-warning">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Actualizar Avalista</button>
               </div>
             </div>
           </form>

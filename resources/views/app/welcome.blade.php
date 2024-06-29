@@ -63,9 +63,9 @@
           <br />
           @if (Route::has('login'))
             @auth
-            <a href="{{ route('dashboard') }}" class="btn btn-primary btn-round btn-lg">Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">Dashboard</a>
             @else
-            <a href="{{ route('login') }}" class="btn btn-primary btn-round btn-lg">Entrar</a>
+            <a href="{{ route('login') }}" class="btn btn-primary btn-lg">Entrar</a>
             @endauth
           @endif
         </div>

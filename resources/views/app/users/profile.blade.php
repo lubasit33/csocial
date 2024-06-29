@@ -209,7 +209,7 @@
             </div> --}}
             <div class="row">
               <div class="update ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary btn-round">Actualizar Meu Perfil</button>
+                <button type="submit" class="btn btn-primary">Actualizar Meu Perfil</button>
               </div>
             </div>
           </form>

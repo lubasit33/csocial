@@ -20,7 +20,7 @@
         <div class="card-header">
           <h4 class="card-title"> Todos os Movimentos</h4>
           <div class="text-right">
-            <a href="{{ route('movimento.create') }}" class="btn btn-success btn-round">Fazer Movimento</a>
+            <a href="{{ route('movimento.create') }}" class="btn btn-success">Fazer Movimento</a>
           </div>
         </div>
         <div class="card-body">

@@ -20,7 +20,7 @@
         <div class="card-header">
           <h4 class="card-title"> Todas as Contas</h4>
           <div class="text-right">
-            <a href="{{ route('conta.create') }}" class="btn btn-success btn-round">Criar Conta</a>
+            <a href="{{ route('conta.create') }}" class="btn btn-success">Criar Conta</a>
           </div>
         </div>
         <div class="card-body">
@@ -41,7 +41,7 @@
                     <td><a href="{{ route('associado.show', $conta->titular) }}">{{ $conta->oTitular->nome }}</a></td>
                     <td><a href="{{ route('avalista.show', $conta->avalista_id) }}">{{ $conta->avalista->nome }}</a></td>
                     <td>
-                      <a href="{{ route('conta.show', $conta->id) }}" class="btn btn-info btn-round">Ver</a>
+                      <a href="{{ route('conta.show', $conta->id) }}" class="btn btn-info">Ver</a>
                       {{-- <a href="{{ route('conta.edit', $conta->id) }}" class="btn btn-primary btn-round">Editar</a> --}}
                       {{-- <a href="javascript:void(0);" class="btn btn-danger">Remover</a> --}}
                     </td>

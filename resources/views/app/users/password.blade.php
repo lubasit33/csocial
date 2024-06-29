@@ -9,7 +9,7 @@
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/css/paper-dashboard.css?v=2.0.1') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />   
+  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -220,7 +220,7 @@
             </div> --}}
             <div class="row">
               <div class="update ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary btn-round">Actualizar Minha Senha</button>
+                <button type="submit" class="btn btn-primary">Actualizar Minha Senha</button>
               </div>
             </div>
           </form>
@@ -236,7 +236,7 @@
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
- 
+
   <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
   <!--  Notifications Plugin    -->
   <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>

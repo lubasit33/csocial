@@ -29,7 +29,8 @@ class MovimentoController extends Controller
     {
         Movimento::create($request->all());
 
-        return redirect()->route('movimento.index');
+        return redirect()->route('movimento.index')
+            ->with('success', 'O movimento foi feito com sucesso!');
     }
 
 }

@@ -6,8 +6,11 @@ use App\Models\Conta;
 use App\Models\Avalista;
 use App\Models\Associado;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use App\Http\Requests\ContaStoreValidationRequest;
 use App\Http\Requests\ContaUpdateValidationRequest;
+use App\Http\Requests\TotalDepositoValidationRequest;
+use App\Models\Movimento;
 
 class ContaController extends Controller
 {
@@ -30,7 +33,8 @@ class ContaController extends Controller
     {
         Conta::create($request->all());
 
-        return redirect()->route('conta.index');
+        return redirect()->route('conta.index')
+            ->with('success', 'Conta criada com sucesso!');
     }
 
     public function show(Conta $conta)
@@ -39,7 +43,8 @@ class ContaController extends Controller
             'oTitular.contas',
             'avalista',
             'movimentos.categoria',
-        ])->first();
+        ])->where('id', $conta->id)
+          ->first();
 
         return view('app.contas.show', compact('conta'));
     }
@@ -57,7 +62,33 @@ class ContaController extends Controller
     {
         $conta->update($request->all());
 
-        return redirect()->route('conta.index');
+        return redirect()->route('conta.index')
+            ->with('success', 'Conta actualizada com sucesso!');
+    }
+
+    public function consultarTotalDeposito(Conta $conta)
+    {
+        return view('app.contas.depositos.consultar', [
+            'conta' => $conta,
+        ]);
+    }
+
+    public function totalDeposito(TotalDepositoValidationRequest $request, Conta $conta)
+    {
+        $depositos = Movimento::where('conta_id', $conta->id)
+            ->where('categoria_id', 1)
+            ->whereBetween('data_movimento', [$request->data_inicio, $request->data_fim]);
+
+        $todosDepositos = $depositos->get();
+        $depositos = $depositos->pluck('valor')->sum();
+
+        return view('app.contas.depositos.consultar', [
+            'conta' => $conta,
+            'todosDepositos' => $todosDepositos,
+            'depositos' => $depositos,
+            'dataInicio' => $request->data_inicio,
+            'dataFim' => $request->data_fim,
+        ]);
     }
 
 }

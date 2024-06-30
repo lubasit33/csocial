@@ -42,13 +42,13 @@
                     <td><a href="{{ route('avalista.show', $conta->avalista_id) }}">{{ $conta->avalista->nome }}</a></td>
                     <td>
                       <a href="{{ route('conta.show', $conta->id) }}" class="btn btn-info">Ver</a>
-                      {{-- <a href="{{ route('conta.edit', $conta->id) }}" class="btn btn-primary btn-round">Editar</a> --}}
+                      <a href="{{ route('conta.consultarTotalDeposito', $conta->id) }}" class="btn btn-primary">Total de Depósitos</a>
                       {{-- <a href="javascript:void(0);" class="btn btn-danger">Remover</a> --}}
                     </td>
                 </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">Não foram criadas contas ainda.</td>
+                        <td colspan="5" class="text-center">Não foram encontradas contas.</td>
                     </tr>
                 @endforelse
               </tbody>
@@ -70,7 +70,13 @@
 
   <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
   <!--  Notifications Plugin    -->
-  <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
   <script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
+
+  <script>
+    @if (session('success'))
+        demo.showNotification('success', 'nc-icon nc-check-2', "{{ session('success') }}", 10, 'top', 'right')
+    @endif
+</script>
 @endsection

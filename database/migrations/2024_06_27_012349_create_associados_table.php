@@ -15,7 +15,8 @@ class CreateAssociadosTable extends Migration
     {
         Schema::create('associados', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 100);
+            $table->string('nome', 100)->index();
+            $table->string('bi', 14)->unique()->index();
             $table->date('data_nascimento');
             $table->boolean('genero')->default(false);
             $table->string('residencia', 255)->nullable();

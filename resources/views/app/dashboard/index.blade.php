@@ -40,7 +40,7 @@
         </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
+    {{-- <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
         <div class="card-body ">
             <div class="row">
@@ -59,13 +59,13 @@
         </div>
         <div class="card-footer ">
             <hr>
-            {{-- <div class="stats">
+            <div class="stats">
             <i class="fa fa-calendar-o"></i>
             Last day
-            </div> --}}
+            </div>
         </div>
         </div>
-    </div>
+    </div> --}}
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
         <div class="card-body ">
@@ -121,23 +121,42 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-      <div class="card ">
-        <div class="card-header ">
-          <h5 class="card-title">Associados</h5>
-          <p class="card-category">Análise de 24 horas</p>
+      <div class="card card-plain">
+        <div class="card-header">
+          <h4 class="card-title"> Associados</h4>
+          <p class="card-category"> Os últimos 5 associados cadastrados ao caixa social.</p>
         </div>
-        <div class="card-body ">
-          <canvas id=chartHours width="400" height="100"></canvas>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          {{-- <div class="stats">
-            <i class="fa fa-history"></i> Updated 3 minutes ago
-          </div> --}}
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th>Nome</th>
+                <th>B.I.</th>
+                <th>Idade</th>
+                <th>Género</th>
+                <th>Residência</th>
+              </thead>
+              <tbody>
+                @forelse ($associados as $associado)
+                <tr>
+                    <td>{{ ucwords($associado->nome) }}</td>
+                    <td>{{ $associado->bi }}</td>
+                    <td>{{ $associado->idade() }}</td>
+                    <td>{{ ucwords($associado->genero()) }}</td>
+                    <td>{{ ucwords($associado->residencia) }}</td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="5" class="text-center">Não foram cadastrados associdos ainda.</td>
+                </tr>
+                @endforelse
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</div>
 @endsection
 
 @section('js')
@@ -155,5 +174,10 @@
       // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
       demo.initChartsPages();
     });
-  </script>
+</script>
+<script>
+    @if (session('success'))
+        demo.showNotification('success', 'nc-icon nc-check-2', "{{ session('success') }}", 10, 'bottom', 'right')
+    @endif
+</script>
 @endsection

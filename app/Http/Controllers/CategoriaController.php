@@ -24,7 +24,8 @@ class CategoriaController extends Controller
     {
         Categoria::create($request->all());
 
-        return redirect()->route('categoria.index');
+        return redirect()->route('categoria.index')
+            ->with('success', 'Categoria cadastrada com sucesso!');
     }
 
     public function show(Categoria $categoria)
@@ -45,7 +46,8 @@ class CategoriaController extends Controller
     {
         $categoria->update($request->only(['nome']));
 
-        return redirect()->route('categoria.index');
+        return redirect()->route('categoria.index')
+            ->with('success', 'Categoria actualizada com sucesso!');
     }
 
 }

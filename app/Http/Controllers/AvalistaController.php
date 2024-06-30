@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AvalistaValidationRequest;
 use App\Models\Avalista;
-use Illuminate\Http\Request;
+use App\Http\Requests\AvalistaStoreValidationRequest;
+use App\Http\Requests\AvalistaUpdateValidationRequest;
 
 class AvalistaController extends Controller
 {
     public function index()
     {
         return view('app.avalistas.index', [
-            'avalistas' => Avalista::all(),
+            'avalistas' => Avalista::orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -20,16 +20,19 @@ class AvalistaController extends Controller
         return view('app.avalistas.create');
     }
 
-    public function store(AvalistaValidationRequest $request)
+    public function store(AvalistaStoreValidationRequest $request)
     {
         Avalista::create($request->all());
 
-        return redirect()->route('avalista.index');
+        return redirect()->route('avalista.index')
+            ->with('success', 'Avalista cadastrado com sucesso!');
     }
 
     public function show(Avalista $avalista)
     {
-        $avalista = $avalista::with(['contas'])->first();
+        $avalista = $avalista::with(['contas'])
+            ->where('id', $avalista->id)
+            ->first();
 
         return view('app.avalistas.show', compact('avalista'));
     }
@@ -39,11 +42,12 @@ class AvalistaController extends Controller
         return view('app.avalistas.edit', compact('avalista'));
     }
 
-    public function update(AvalistaValidationRequest $request, Avalista $avalista)
+    public function update(AvalistaUpdateValidationRequest $request, Avalista $avalista)
     {
         $avalista->update($request->all());
 
-        return redirect()->route('avalista.index');
+        return redirect()->route('avalista.index')
+            ->with('success', 'Avalista actualizado com sucesso!');
     }
 
 }

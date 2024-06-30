@@ -28,6 +28,7 @@
             <table class="table">
               <thead class=" text-primary">
                 <th>Nome</th>
+                <th>B.I.</th>
                 <th>Data de Início de Funções</th>
                 <th>Salário</th>
                 <th>Local de Trabalho</th>
@@ -37,6 +38,7 @@
                 @forelse ($avalistas as $avalista)
                 <tr>
                     <td>{{ $avalista->nome }}</td>
+                    <td>{{ $avalista->bi }}</td>
                     <td>{{ $avalista->dataInicioFuncoes() }}</td>
                     <td>{{ $avalista->salario }}</td>
                     <td>{{ $avalista->local_trabalho }}</td>
@@ -48,7 +50,7 @@
                 </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">Não foram cadastrados avalistas ainda.</td>
+                        <td colspan="6" class="text-center">Não foram cadastrados avalistas ainda.</td>
                     </tr>
                 @endforelse
               </tbody>
@@ -69,7 +71,13 @@
 
   <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
   <!--  Notifications Plugin    -->
-  <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
   <script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
+
+  <script>
+    @if (session('success'))
+        demo.showNotification('success', 'nc-icon nc-check-2', "{{ session('success') }}", 10, 'top', 'right')
+    @endif
+</script>
 @endsection

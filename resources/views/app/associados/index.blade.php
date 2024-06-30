@@ -3,6 +3,21 @@
 @section('title', 'Associados - CSocial')
 @section('associado', 'active')
 
+@section('search')
+<form action="{{ route('associado.search') }}" method="POST">
+   @csrf
+
+    <div class="input-group no-border">
+      <input type="text" value="{{ old('search') }}" name="search" class="form-control" placeholder="Procurar associados...">
+      <div class="input-group-append">
+        <button type="submit" class="input-group-text">
+          <i class="nc-icon nc-zoom-split"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+@endsection
+
 @section('css')
 {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> --}}
   <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
@@ -28,6 +43,7 @@
             <table class="table">
               <thead class=" text-primary">
                 <th>Nome</th>
+                <th>B.I.</th>
                 <th>Data de Nascimento</th>
                 <th>Género</th>
                 <th>Residência</th>
@@ -37,6 +53,7 @@
                 @forelse ($associados as $associado)
                 <tr>
                     <td>{{ ucwords($associado->nome) }}</td>
+                    <td>{{ $associado->bi }}</td>
                     <td>{{ $associado->dataNascimento() }}</td>
                     <td>{{ ucwords($associado->genero()) }}</td>
                     <td>{{ ucwords($associado->residencia) }}</td>
@@ -48,7 +65,7 @@
                 </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">Não foram cadastrados associdos ainda.</td>
+                        <td colspan="6" class="text-center">Não foram encontrados associdos.</td>
                     </tr>
                 @endforelse
               </tbody>
@@ -190,14 +207,20 @@
 
 @section('js')
 <!--   Core JS Files   -->
-  <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
-  <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
-  <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
 
-  <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
-  <script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
-  <script src="{{ asset('assets/demo/demo.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
+<!--  Notifications Plugin    -->
+<script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
+<script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/demo/demo.js') }}"></script>
+
+<script>
+    @if (session('success'))
+        demo.showNotification('success', 'nc-icon nc-check-2', "{{ session('success') }}", 10, 'top', 'right')
+    @endif
+</script>
 @endsection

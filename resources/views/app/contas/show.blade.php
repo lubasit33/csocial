@@ -106,7 +106,7 @@
                     </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center"> não tem movimentos ainda.</td>
+                            <td colspan="5" class="text-center"> Não tem movimentos ainda.</td>
                         </tr>
                     @endforelse
                   </tbody>

@@ -77,4 +77,10 @@
   <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
   <script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
+
+  <script>
+    @if (session('success'))
+        demo.showNotification('success', 'nc-icon nc-check-2', "{{ session('success') }}", 10, 'top', 'right')
+    @endif
+</script>
 @endsection

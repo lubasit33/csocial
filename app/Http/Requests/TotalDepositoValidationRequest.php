@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AssociadoRequestValidation extends FormRequest
+class TotalDepositoValidationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,12 @@ class AssociadoRequestValidation extends FormRequest
      */
     public function rules()
     {
-        $this->all()['genero'] = $this->all()['genero'] ? true : false;
+        $data_inicio = $this->all()['data_inicio'];
+        $today = date_format(date_create(now()), 'Y-m-d');
 
         return [
-            'nome' => 'bail|required|string|min:3|max:100',
-            'data_nascimento' => 'bail|required|date|after:1900-01-01',
-            'genero' => 'bail|required|boolean',
-            'residencia' => 'bail|nullable|string|min:3|max:255',
+            'data_inicio' => 'bail|required|date|after:2024-06-20|before_or_equal:data_fim',
+            'data_fim' => "bail|required_if:data_inicio,{$data_inicio}|date|after_or_equal:data_inicio|before_or_equal:{$today}",
         ];
     }
 

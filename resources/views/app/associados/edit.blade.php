@@ -37,7 +37,16 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Número do Bilhete de Identidade</label>
+                        <input name="bi" type="text" class="form-control" placeholder="Digite o número do bilhete de identidade do associado" value="{{ old('bi', $associado->bi) }}" required />
+                        @error('bi')
+                        <small style="color: red;">{{ $message }}</small>
+                        @enderror
+                      </div>
+                  </div>
+              <div class="col-md-4">
                 <div class="form-group">
                   <label>Data de Nascimento</label>
                   <input type="date" name="data_nascimento" class="form-control"  value="{{ old('data_nascimento', $associado->data_nascimento) }}" required />
@@ -46,7 +55,7 @@
                   @enderror
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                     <label >Género</label>
                     <select class="form-control" name="genero" required >

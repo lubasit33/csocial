@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/{associado}', [AssociadoController::class, 'show'])->name('show');
         Route::get('/{associado}/edit', [AssociadoController::class, 'edit'])->name('edit');
         Route::put('/{associado}', [AssociadoController::class, 'update'])->name('update');
+        Route::post('/search', [AssociadoController::class, 'search'])->name('search');
         // Route::delete('/{associado}', [AssociadoController::class, 'destroy'])->name('destroy');
     });
 
@@ -48,6 +49,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/{conta}', [ContaController::class, 'show'])->name('show');
         Route::get('/{conta}/edit', [ContaController::class, 'edit'])->name('edit');
         Route::put('/{conta}', [ContaController::class, 'update'])->name('update');
+        Route::get('/{conta}/consultarTotalDeposito', [ContaController::class, 'consultarTotalDeposito'])->name('consultarTotalDeposito');
+        Route::post('/{conta}/totalDeposito', [ContaController::class, 'totalDeposito'])->name('totalDeposito');
         // Route::delete('/{id}', [ContaController::class, 'destroy'])->name('destroy');
     });
 

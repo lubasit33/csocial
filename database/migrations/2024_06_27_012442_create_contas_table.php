@@ -23,6 +23,7 @@ class CreateContasTable extends Migration
             $table->foreignId('avalista_id')
                 ->constrained()
                 ->cascadeOnUpdate();
+            $table->index('numero_conta');
             $table->timestamps();
         });
     }

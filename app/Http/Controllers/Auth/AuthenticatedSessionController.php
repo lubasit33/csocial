@@ -32,6 +32,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $userName = ucwords($request->user()->name);
+
+        $request->session()
+            ->flash('success', "Seja Bem-vindo(a), {$userName}!");
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

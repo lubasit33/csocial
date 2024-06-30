@@ -11,6 +11,7 @@ class Avalista extends Model
 
     protected $fillable = [
         'nome',
+        'bi',
         'data_inicio_funcoes',
         'salario',
         'local_trabalho',
@@ -25,5 +26,5 @@ class Avalista extends Model
     {
         return $this->hasMany(Conta::class);
     }
-    
+
 }

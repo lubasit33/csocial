@@ -26,9 +26,9 @@
               <img class="avatar border-gray" src="{{ asset('assets/img/default-avatar.png') }}" alt="User Profile Picture">
               <h5 class="title">{{ ucwords($associado->nome) }}</h5>
             </a>
-            {{-- <p class="description">
-
-            </p> --}}
+            <p class="description">
+                {{ $associado->bi }}
+            </p>
           </div>
           <p class="description text-center">
             {{ $associado->residencia }}

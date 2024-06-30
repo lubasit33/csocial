@@ -11,6 +11,7 @@ class Associado extends Model
 
     protected $fillable = [
         'nome',
+        'bi',
         'data_nascimento',
         'genero',
         'residencia',

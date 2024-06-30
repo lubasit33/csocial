@@ -36,7 +36,16 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Número do Bilhete de Identidade</label>
+                        <input name="bi" type="text" class="form-control" placeholder="Digite o número do bilhete de identidade do avalista" value="{{ old('bi') }}" required />
+                        @error('bi')
+                        <small style="color: red;">{{ $message }}</small>
+                        @enderror
+                      </div>
+                  </div>
+              <div class="col-md-4">
                 <div class="form-group">
                   <label>Data de Início das Funções</label>
                   <input type="date" name="data_inicio_funcoes" class="form-control"  value="{{ old('data_inicio_funcoes') }}" required />
@@ -45,7 +54,7 @@
                   @enderror
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                     <label >Salário</label>
                     <input type="number" name="salario" class="form-control" placeholder="Digite o salário do avalista" min="0" value="{{ old('salario') }}"  required />

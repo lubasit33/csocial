@@ -23,7 +23,8 @@ class UserController extends Controller
 
         $user->update($request->only(['name', 'email']));
 
-        return redirect()->route('user.profile');
+        return redirect()->route('user.profile')
+            ->with('success', 'O seu perfil foi actualizado com sucesso!');
     }
 
     public function password()
@@ -42,7 +43,8 @@ class UserController extends Controller
                 'password' => Hash::make($request->new_password),
             ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('user.password')
+            ->with('success', "A sua senha foi alterada com sucesso!");
     }
 
 }

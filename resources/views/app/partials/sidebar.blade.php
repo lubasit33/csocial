@@ -2,7 +2,7 @@
     <div class="logo">
       <a href="{{ route('user.profile', Auth::user()->id) }}" class="simple-text logo-mini">
         <div class="logo-image-small">
-          <img src="{{ asset('assets/img/default-avatar.png') }}">
+          <img src="{{ !empty(Auth::user()->photo) ? asset('upload/adminimages/'. Auth::user()->photo) : asset('upload/default-avatar.png') }}" />
         </div>
         <!-- <p>CT</p> -->
       </a>

@@ -35,7 +35,22 @@ class AssociadoController extends Controller
 
     public function store(AssociadoStoreValidationRequest $request)
     {
-        Associado::create($request->all());
+        $associado = new Associado();
+
+        $associado->nome = $request->nome;
+        $associado->bi = $request->bi;
+        $associado->data_nascimento = $request->data_nascimento;
+        $associado->genero = $request->genero;
+        $associado->residencia = $request->residencia;
+
+        if ($request->file('imagem')) {
+            $file = $request->file('imagem');
+            $fileName = date('YmdHis') . $file->getClientOriginalName();
+            $file->move(public_path('upload/associadoimagens'), $fileName);
+            $associado->imagem = $fileName;
+        }
+
+        $associado->save();
 
         return redirect()->route('associado.index')
             ->with('success', 'Associado cadastrado com sucesso!');
@@ -57,7 +72,26 @@ class AssociadoController extends Controller
 
     public function update(AssociadoUpdateValidationRequest $request, Associado $associado)
     {
-        $associado->update($request->all());
+        $associado->nome = $request->nome;
+        $associado->bi = $request->bi;
+        $associado->data_nascimento = $request->data_nascimento;
+        $associado->genero = $request->genero;
+        $associado->residencia = $request->residencia;
+
+        if ($request->file('imagem')) {
+            $file = $request->file('imagem');
+            $fileName = date('YmdHis') . $file->getClientOriginalName();
+            $file->move(public_path('upload/associadoimagens'), $fileName);
+
+            if (!is_null($associado->imagem) && !empty($associado->imagem)) {
+                $filePath = "upload/associadoimagens/{$associado->imagem}";
+                if (file_exists($filePath)) unlink(public_path($filePath));
+            }
+
+            $associado->imagem = $fileName;
+        }
+
+        $associado->save();
 
         return redirect()->route('associado.index')
             ->with('success', 'Associado actualizado com sucesso!');

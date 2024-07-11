@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\AssociadoController;
-use App\Http\Controllers\AvalistaController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ContaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContaController;
+use App\Http\Controllers\AvalistaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AssociadoController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\MovimentoController;
 
 Route::view('/', 'app.welcome');

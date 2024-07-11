@@ -21,7 +21,23 @@ class UserController extends Controller
     {
         $user = User::findOrfail($id);
 
-        $user->update($request->only(['name', 'email']));
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->file('photo')) {
+            $file = $request->file('photo');
+            $fileName = date('YmdHis') . $file->getClientOriginalName();
+            $file->move(public_path('upload/adminimages'), $fileName);
+
+            if (!is_null($user->photo) && !empty($user->photo)) {
+                $filePath = "upload/adminimages/{$user->photo}";
+                unlink(public_path($filePath));
+            }
+
+            $user->photo = $fileName;
+        }
+
+        $user->save();
 
         return redirect()->route('user.profile')
             ->with('success', 'O seu perfil foi actualizado com sucesso!');

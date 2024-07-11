@@ -20,6 +20,7 @@ class CreateAvalistasTable extends Migration
             $table->date('data_inicio_funcoes');
             $table->decimal('salario', 14, 2);
             $table->string('local_trabalho', 255)->nullable();
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }

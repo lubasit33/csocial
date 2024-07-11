@@ -15,6 +15,7 @@ class Associado extends Model
         'data_nascimento',
         'genero',
         'residencia',
+        'imagem',
     ];
 
     public function genero()

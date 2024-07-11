@@ -23,7 +23,9 @@
         <div class="card-body">
           <div class="author">
             <a href="{{ route('associado.edit', $associado->id) }}">
-              <img class="avatar border-gray" src="{{ asset('assets/img/default-avatar.png') }}" alt="User Profile Picture">
+              <img class="avatar border-gray"
+              src="{{ !empty($associado->imagem) ? asset('upload/associadoimagens/' . $associado->imagem) : asset('upload/default-avatar.png') }}"
+              alt="Imagem do Associado">
               <h5 class="title">{{ ucwords($associado->nome) }}</h5>
             </a>
             <p class="description">

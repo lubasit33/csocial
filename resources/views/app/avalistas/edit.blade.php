@@ -15,13 +15,22 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-2">
+        <div class="card card-user">
+          <div class="card-body">
+              <img class="avatar border-gray" id="mostrarImagem"
+              src="{{ !empty($avalista->imagem) ? asset('upload/avalistaimagens/' . $avalista->imagem) : asset('assets/img/default-avatar.png') }}"
+                alt="Associado Imagem" />
+          </div>
+        </div>
+    </div>
+    <div class="col-md-10">
       <div class="card card-user">
         <div class="card-header">
           <h5 class="card-title">Actualizar Avalista</h5>
         </div>
         <div class="card-body">
-          <form action="{{ route('avalista.update', $avalista->id) }}" method="POST">
+          <form action="{{ route('avalista.update', $avalista->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -77,6 +86,16 @@
               </div>
             </div>
             <div class="row">
+                <div class="col-md-12">
+                    <label>Imagem</label>
+                    <input type="file" id="imagem" class="form-control" name="imagem" value="{{ old('imagem', $avalista->imagem) }}" />
+                    @error('imagem')
+                    <small style="color: red;">{{ $message }}</small>
+                    @enderror
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="update ml-auto mr-auto">
                 <a href="{{ route('avalista.index') }}" class="btn btn-warning">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Actualizar Avalista</button>
@@ -101,4 +120,16 @@
   <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
   <script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
+
+  <script>
+    $(document).ready(function() {
+        $('#imagem').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#mostrarImagem').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        })
+    });
+</script>
 @endsection

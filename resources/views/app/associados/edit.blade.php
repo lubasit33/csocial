@@ -15,13 +15,22 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-2">
+        <div class="card card-user">
+          <div class="card-body">
+              <img class="avatar border-gray" id="mostrarImagem"
+              src="{{ !empty($associado->imagem) ? asset('upload/associadoimagens/' . $associado->imagem) : asset('upload/default-avatar.png') }}"
+                alt="Associado Imagem" />
+          </div>
+        </div>
+    </div>
+    <div class="col-md-10">
       <div class="card card-user">
         <div class="card-header">
           <h5 class="card-title">Actualizar Associado</h5>
         </div>
         <div class="card-body">
-          <form action="{{ route('associado.update', $associado->id) }}" method="POST">
+          <form action="{{ route('associado.update', $associado->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -37,7 +46,7 @@
               </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label>Número do Bilhete de Identidade</label>
                         <input name="bi" type="text" class="form-control" placeholder="Digite o número do bilhete de identidade do associado" value="{{ old('bi', $associado->bi) }}" required />
@@ -46,7 +55,7 @@
                         @enderror
                       </div>
                   </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label>Data de Nascimento</label>
                   <input type="date" name="data_nascimento" class="form-control"  value="{{ old('data_nascimento', $associado->data_nascimento) }}" required />
@@ -55,7 +64,7 @@
                   @enderror
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="form-group">
                     <label >Género</label>
                     <select class="form-control" name="genero" required >
@@ -82,9 +91,19 @@
               </div>
             </div>
             <div class="row">
+                <div class="col-md-12">
+                    <label>Imagem</label>
+                    <input type="file" id="imagem" class="form-control" name="imagem" value="{{ old('imagem', $associado->imagem) }}" />
+                    @error('imagem')
+                    <small style="color: red;">{{ $message }}</small>
+                    @enderror
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary">Actualizar Associado</button>
                 <a href="{{ route('associado.index') }}" class="btn btn-warning">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Actualizar Associado</button>
               </div>
             </div>
           </form>
@@ -106,4 +125,16 @@
   <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
   <script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#imagem').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#mostrarImagem').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        })
+    });
+</script>
 @endsection

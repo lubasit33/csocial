@@ -29,6 +29,7 @@ class AvalistaStoreValidationRequest extends FormRequest
             'data_inicio_funcoes' => 'bail|required|date|after:2001-01-01',
             'salario' => 'bail|required|numeric',
             'local_trabalho' => 'bail|required|string|min:3|max:255',
+            'imagem' => 'bail|nullable|file|mimes:jpg,jpeg,png|max:1024',
         ];
     }
 

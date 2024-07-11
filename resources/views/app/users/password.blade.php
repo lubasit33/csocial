@@ -22,7 +22,9 @@
         <div class="card-body">
           <div class="author">
             <a href="#">
-              <img class="avatar border-gray" src="{{ asset('assets/img/default-avatar.png') }}" alt="User Profile Picture">
+                <img class="avatar border-gray"
+                src="{{ !empty($user->photo) ? asset('upload/adminimages/'. $user->photo) : asset('upload/default-avatar.png') }}"
+                alt="User Profile Picture" />
               <h5 class="title">{{ ucwords($user->name) }}</h5>
             </a>
             <p class="description">

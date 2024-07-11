@@ -15,6 +15,7 @@ class Avalista extends Model
         'data_inicio_funcoes',
         'salario',
         'local_trabalho',
+        'imagem',
     ];
 
     public function dataInicioFuncoes()

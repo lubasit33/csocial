@@ -20,6 +20,7 @@ class CreateAssociadosTable extends Migration
             $table->date('data_nascimento');
             $table->boolean('genero')->default(false);
             $table->string('residencia', 255)->nullable();
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }

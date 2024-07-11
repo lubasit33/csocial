@@ -28,9 +28,10 @@ class AssociadoStoreValidationRequest extends FormRequest
         return [
             'nome' => 'bail|required|string|min:3|max:100',
             'bi' => 'bail|required|string|min:14|max:14|unique:associados,bi|regex:/^[0-9]{9}[A-Z]{2}[0-9]{3}$/',
-            'data_nascimento' => 'bail|required|date|after:1900-01-01',
+            'data_nascimento' => 'bail|required|date|before:2006-01-01|after:1900-01-01',
             'genero' => 'bail|required|boolean',
             'residencia' => 'bail|nullable|string|min:3|max:255',
+            'imagem' => 'bail|nullable|file|mimes:jpg,jpeg,png|max:1024',
         ];
     }
 

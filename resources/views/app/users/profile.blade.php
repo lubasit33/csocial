@@ -22,7 +22,9 @@
         <div class="card-body">
           <div class="author">
             <a href="#">
-              <img class="avatar border-gray" src="{{ asset('assets/img/default-avatar.png') }}" alt="User Profile Picture">
+              <img class="avatar border-gray" id="mostrarImagem"
+                src="{{ !empty($user->photo) ? asset('upload/adminimages/'. $user->photo) : asset('upload/default-avatar.png') }}"
+                alt="User Profile Picture" />
               <h5 class="title">{{ ucwords($user->name) }}</h5>
             </a>
             <p class="description">
@@ -119,7 +121,7 @@
           <h5 class="card-title">Editar Meu Perfil</h5>
         </div>
         <div class="card-body">
-          <form action="{{ route('user.update', $user->id) }}" method="POST">
+          <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -174,6 +176,16 @@
                   <label>E-mail</label>
                   <input type="email" class="form-control" placeholder="Digite o seu email" name="email" value="{{ old('email', $user->email) }}" />
                     @error('email')
+                    <small style="color: red;">{{ $message }}</small>
+                    @enderror
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Foto</label>
+                    <input type="file" id="imagem" class="form-control" name="photo" value="{{ old('photo', $user->photo) }}" />
+                    @error('photo')
                     <small style="color: red;">{{ $message }}</small>
                     @enderror
                 </div>
@@ -236,5 +248,17 @@
     @if (session('success'))
         demo.showNotification('success', 'nc-icon nc-check-2', "{{ session('success') }}", 10, 'top', 'right')
     @endif
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#imagem').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#mostrarImagem').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        })
+    });
 </script>
 @endsection

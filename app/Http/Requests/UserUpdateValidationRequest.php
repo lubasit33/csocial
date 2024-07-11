@@ -26,8 +26,9 @@ class UserUpdateValidationRequest extends FormRequest
         $user_id = $this->route('id');
 
         return [
-            'name' => 'required|string|min:3|max:255',
-            'email' => 'required|string|email|unique:users,email,'. $user_id,
+            'name' => 'bail|required|string|min:3|max:255',
+            'email' => 'bail|required|string|email|unique:users,email,'. $user_id,
+            'photo' => 'bail|nullable|file|mimes:jpg,jpeg,png|max:1024',
         ];
     }
 

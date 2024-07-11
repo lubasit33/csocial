@@ -23,7 +23,8 @@
         <div class="card-body">
           <div class="author">
             <a href="{{ route('avalista.edit', $avalista->id) }}">
-              <img class="avatar border-gray" src="{{ asset('assets/img/default-avatar.png') }}" alt="User Profile Picture">
+              <img class="avatar border-gray"
+                src="{{ !empty($avalista->imagem) ? asset('upload/avalistaimagens/' . $avalista->imagem) : asset('assets/img/default-avatar.png') }}" alt="User Profile Picture">
               <h5 class="title">{{ ucwords($avalista->nome) }}</h5>
             </a>
             <p class="description">

@@ -17,6 +17,7 @@ class CreateContasTable extends Migration
             $table->id();
             $table->string('numero_conta', 11)->unique();
             $table->date('data_abertura');
+            $table->decimal('saldo', 18, 2)->default(0.0);
             $table->foreignId('titular')
                 ->constrained('associados')
                 ->cascadeOnUpdate();

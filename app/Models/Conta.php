@@ -11,6 +11,7 @@ class Conta extends Model
 
     protected $fillable = [
         'numero_conta',
+        'saldo',
         'data_abertura',
         'titular',
         'avalista_id',
@@ -19,6 +20,11 @@ class Conta extends Model
     public function dataAbertura()
     {
         return date_format(date_create($this->data_abertura), 'd/m/Y');
+    }
+
+    public function saldo()
+    {
+        return number_format($this->saldo, 2, ',', '.');
     }
 
     public function oTitular()

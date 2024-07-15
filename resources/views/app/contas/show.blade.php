@@ -82,6 +82,7 @@
       <div class="card card-user">
         <div class="card-header">
           <h5 class="card-title">Todas os Movimentos da Conta {{ $conta->numero_conta }}</h5>
+          <p><b>Saldo da Conta: </b> {{ $conta->saldo() }}</p>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -95,9 +96,9 @@
                   <tbody>
                     @forelse ($conta->movimentos as $movimento)
                     <tr>
-                        <td>{{ $movimento->valor }}</td>
+                        <td>{{ $movimento->valor() }}</td>
                         <td>{{ $movimento->dataMovimento() }}</td>
-                        <td><a href="{{ route('categoria.show', $movimento->categoria_id) }}">{{ ucwords($movimento->categoria->nome) }}</a></td>
+                        <td>{{ ucwords($movimento->categoria->nome) }}</td>
                         {{-- <td>
                           <a href="javascript:void(0);" class="btn btn-info btn-round">Ver</a>
                           <a href="{{ route('movimento.edit', $movimento->id) }}" class="btn btn-primary btn-round">Editar</a>

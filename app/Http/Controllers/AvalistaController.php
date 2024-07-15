@@ -22,8 +22,6 @@ class AvalistaController extends Controller
 
     public function store(AvalistaStoreValidationRequest $request)
     {
-        Avalista::create($request->all());
-
         $avalista = new Avalista();
 
         $avalista->nome = $request->nome;

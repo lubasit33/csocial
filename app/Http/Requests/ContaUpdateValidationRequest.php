@@ -27,6 +27,7 @@ class ContaUpdateValidationRequest extends FormRequest
 
         return [
             'numero_conta' => "bail|required|string|min:11|max:11|unique:contas,numero_conta,{$conta_id}",
+            'saldo' => 'bail|required|numeric',
             'data_abertura' => 'bail|required|date|after:1990-01-01',
             'titular' => 'bail|required|integer|exists:associados,id',
             'avalista_id' => 'bail|required|integer|exists:avalistas,id',

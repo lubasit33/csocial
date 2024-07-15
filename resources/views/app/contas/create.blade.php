@@ -61,6 +61,40 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
+                      <label>Número de Conta</label>
+                      <input name="numero_conta" type="text" class="form-control" placeholder="Digite o número de conta" value="{{ old('numero_conta') }}" required />
+                      @error('numero_conta')
+                      <small style="color: red;">{{ $message }}</small>
+                      @enderror
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Saldo Inicial</label>
+                        <input type="number" name="saldo" class="form-control" placeholder="Digite o saldo inicial da conta" min="0" value="{{ old('saldo') }}"  required />
+                        @error('saldo')
+                        <small style="color: red;">{{ $message }}</small>
+                        @enderror
+                    </div>
+                  </div>
+
+                {{-- <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Data de Abertura da Conta</label>
+                      <input type="date" name="data_abertura" class="form-control"  value="{{ old('data_abertura') }}" required />
+                      @error('data_abertura')
+                      <small style="color: red;">{{ $message }}</small>
+                      @enderror
+                    </div>
+                </div> --}}
+
+                <input type="hidden" name="data_abertura" value="{{ date('Y-m-d') }}" />
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
                         <label >Titular</label>
                         <select class="form-control" name="titular" required >
                           <option selected disabled>Escolha o titular da conta</option>
@@ -73,18 +107,8 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                      <label>Número de Conta</label>
-                      <input name="numero_conta" type="text" class="form-control" placeholder="Digite o número de conta" value="{{ old('numero_conta') }}" required />
-                      @error('numero_conta')
-                      <small style="color: red;">{{ $message }}</small>
-                      @enderror
-                    </div>
-                  </div>
-                </div>
-            <div class="row">
-                <div class="col-md-8">
+
+                <div class="col-md-6">
                     <div class="form-group">
                         <label >Avalista</label>
                             <select class="form-control" name="avalista_id" required >
@@ -97,21 +121,12 @@
                         <small style="color: red;">{{ $message }}</small>
                         @enderror
                     </div>
-                  </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Data de Abertura da Conta</label>
-                  <input type="date" name="data_abertura" class="form-control"  value="{{ old('data_abertura') }}" required />
-                  @error('data_abertura')
-                  <small style="color: red;">{{ $message }}</small>
-                  @enderror
                 </div>
-              </div>
             </div>
             <div class="row">
               <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary">Criar Conta</button>
                 <a href="{{ route('conta.index') }}" class="btn btn-warning">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Criar Conta</button>
               </div>
             </div>
           </form>

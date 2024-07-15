@@ -24,7 +24,7 @@
           <div class="author">
             <a href="{{ route('avalista.edit', $avalista->id) }}">
               <img class="avatar border-gray"
-                src="{{ !empty($avalista->imagem) ? asset('upload/avalistaimagens/' . $avalista->imagem) : asset('assets/img/default-avatar.png') }}" alt="User Profile Picture">
+                src="{{ !empty($avalista->imagem) ? asset('upload/avalistaimagens/' . $avalista->imagem) : asset('upload/default-avatar.png') }}" alt="User Profile Picture">
               <h5 class="title">{{ ucwords($avalista->nome) }}</h5>
             </a>
             <p class="description">
@@ -40,7 +40,7 @@
           <div class="button-container">
             <div class="row">
               <div class="col-lg-3 col-md-6 col-6 ml-auto mr-auto">
-                <h5>{{ $avalista->salario }}<br><small>Salário</small></h5>
+                <h5>{{ $avalista->salario() }}<br><small>Salário</small></h5>
               </div>
               <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
                 <h5>{{ $avalista->dataInicioFuncoes() }}<br><small>Início de Funções</small></h5>

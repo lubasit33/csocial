@@ -28,7 +28,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Valor do Movimento</label>
-                        <input type="number" min="0" name="valor" class="form-control" placeholder="Digite o valor do movimento" required/>
+                        <input type="number" min="1" name="valor" class="form-control" value="{{ old('valor') }}" placeholder="Digite o valor do movimento" required/>
                         @error('valor')
                         <small style="color: red;">{{ $message }}</small>
                         @enderror
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label >Conta</label>
                         <select class="form-control" name="conta_id" required >
@@ -64,7 +64,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <div class="form-group">
                         <label>Data do Movimento</label>
                         <input type="date" name="data_movimento" class="form-control"  value="{{ old('data_movimento') }}" required />
@@ -72,12 +72,13 @@
                         <small style="color: red;">{{ $message }}</small>
                         @enderror
                     </div>
-                </div>
+                </div> --}}
+                <input type="hidden" name="data_movimento" value="{{ date('Y-m-d') }}" />
             </div>
             <div class="row">
               <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary">Fazer Movimento</button>
                 <a href="{{ route('movimento.index') }}" class="btn btn-warning">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Fazer Movimento</button>
               </div>
             </div>
           </form>

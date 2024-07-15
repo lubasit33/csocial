@@ -27,7 +27,19 @@ class MovimentoController extends Controller
 
     public function store(MovimentoValidationRequest $request)
     {
-        Movimento::create($request->all());
+        $conta = Conta::find($request->conta_id);
+
+        $conta->update([
+            'saldo' => $request->categoria_id == 1
+                ? $conta->saldo + $request->valor : $conta->saldo - $request->valor,
+        ]);
+
+        Movimento::create([
+            'valor' => $request->valor,
+            'categoria_id' => $request->categoria_id,
+            'conta_id' => $request->conta_id,
+            'data_movimento' => $request->data_movimento,
+        ]);
 
         return redirect()->route('movimento.index')
             ->with('success', 'O movimento foi feito com sucesso!');

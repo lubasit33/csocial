@@ -46,8 +46,8 @@
               </div>
               <div class="row">
                 <div class="update ml-auto mr-auto">
+                    <button type="submit" class="btn btn-primary">Encontrar o total de Depósito</button>
                     <a href="{{ route('conta.index') }}" class="btn btn-warning">Cancelar</a>
-                  <button type="submit" class="btn btn-primary">Encontrar o total de Depósito</button>
                 </div>
               </div>
             </form>
@@ -79,12 +79,12 @@
                   <tr>
                     <td>{{ ++$key }}</td>
                     <td>{{ $deposito->dataMovimento() }}</td>
-                    <td>{{ $deposito->valor }}</td>
+                    <td>{{ $deposito->valor() }}</td>
                   </tr>
                   @endforeach
                   <tr>
                     <td colspan="2"><b>Total</b></td>
-                    <td><b>{{ $depositos }}</b> Kzs</td>
+                    <td><b>{{ number_format($depositos, 2, ',', '.') }}</b> Kzs</td>
                   </tr>
                 </tbody>
               </table>

@@ -45,12 +45,12 @@
             <p>Movimentos</p>
           </a>
         </li>
-        <li class="@yield('categoria')">
+        {{-- <li class="@yield('categoria')">
             <a href="{{ route('categoria.index') }}">
               <i class="nc-icon nc-money-coins"></i>
               <p>Categorias</p>
             </a>
-          </li>
+        </li> --}}
         {{-- <li>
           <a href="./typography.html">
             <i class="nc-icon nc-caps-small"></i>

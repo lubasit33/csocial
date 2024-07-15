@@ -40,7 +40,7 @@
                     <td>{{ $avalista->nome }}</td>
                     <td>{{ $avalista->bi }}</td>
                     <td>{{ $avalista->dataInicioFuncoes() }}</td>
-                    <td>{{ $avalista->salario }}</td>
+                    <td>{{ $avalista->salario() }}</td>
                     <td>{{ $avalista->local_trabalho }}</td>
                     <td>
                         <a href="{{ route('avalista.show', $avalista->id) }}" class="btn btn-info">Ver</a>

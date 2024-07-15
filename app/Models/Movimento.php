@@ -21,6 +21,11 @@ class Movimento extends Model
         return date_format(date_create($this->data_movimento), 'd/m/Y');
     }
 
+    public function valor()
+    {
+        return number_format($this->valor, 2, ',', '.');
+    }
+
     public function conta()
     {
         return $this->belongsTo(Conta::class);

@@ -19,7 +19,7 @@
         <div class="card card-user">
           <div class="card-body">
               <img class="avatar border-gray" id="mostrarImagem"
-              src="{{ !empty($avalista->imagem) ? asset('upload/avalistaimagens/' . $avalista->imagem) : asset('assets/img/default-avatar.png') }}"
+              src="{{ !empty($avalista->imagem) ? asset('upload/avalistaimagens/' . $avalista->imagem) : asset('upload/default-avatar.png') }}"
                 alt="Associado Imagem" />
           </div>
         </div>
@@ -97,8 +97,8 @@
             </div>
             <div class="row">
               <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary">Actualizar Avalista</button>
                 <a href="{{ route('avalista.index') }}" class="btn btn-warning">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Actualizar Avalista</button>
               </div>
             </div>
           </form>

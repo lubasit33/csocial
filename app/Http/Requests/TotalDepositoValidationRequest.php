@@ -23,11 +23,13 @@ class TotalDepositoValidationRequest extends FormRequest
      */
     public function rules()
     {
+        $dataAberturaConta = $this->route('conta')->data_abertura;
+
         $data_inicio = $this->all()['data_inicio'];
         $today = date_format(date_create(now()), 'Y-m-d');
 
         return [
-            'data_inicio' => 'bail|required|date|after:2024-06-20|before_or_equal:data_fim',
+            'data_inicio' => "bail|required|date|after_or_equal:{$dataAberturaConta}|before_or_equal:data_fim",
             'data_fim' => "bail|required_if:data_inicio,{$data_inicio}|date|after_or_equal:data_inicio|before_or_equal:{$today}",
         ];
     }

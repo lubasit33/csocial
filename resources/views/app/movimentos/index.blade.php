@@ -38,10 +38,10 @@
               <tbody>
                 @forelse ($movimentos as $movimento)
                 <tr>
-                    <td>{{ $movimento->valor }}</td>
+                    <td>{{ $movimento->valor() }}</td>
                     <td>{{ $movimento->dataMovimento() }}</td>
                     <td><a href="{{ route('conta.show', $movimento->conta_id) }}">{{ $movimento->conta->numero_conta }}</a></td>
-                    <td><a href="{{ route('categoria.show', $movimento->categoria_id) }}">{{ ucwords($movimento->categoria->nome) }}</a></td>
+                    <td>{{ ucwords($movimento->categoria->nome) }}</td>
                     <td><a href="{{ route('associado.show', $movimento->conta->titular) }}">{{ ucwords($movimento->conta->oTitular->nome) }}</a></td>
                     <td><a href="{{ route('avalista.show', $movimento->conta->avalista_id) }}">{{ ucwords($movimento->conta->avalista->nome) }}</a></td>
                     {{-- <td>
@@ -74,11 +74,11 @@
 
   <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
   <!--  Notifications Plugin    -->
-  <script src="../{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
   <script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
 
-  <script>
+<script>
     @if (session('success'))
         demo.showNotification('success', 'nc-icon nc-check-2', "{{ session('success') }}", 10, 'top', 'right')
     @endif

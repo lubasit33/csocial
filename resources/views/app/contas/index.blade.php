@@ -28,6 +28,7 @@
             <table class="table">
               <thead class=" text-primary">
                 <th>Número da Conta</th>
+                <th>Saldo da Conta</th>
                 <th>Data de Abertura</th>
                 <th>Titular</th>
                 <th>Avalista</th>
@@ -37,6 +38,7 @@
                 @forelse ($contas as $conta)
                 <tr>
                     <td>{{ $conta->numero_conta }}</td>
+                    <td>{{ $conta->saldo() }}</td>
                     <td>{{ $conta->dataAbertura() }}</td>
                     <td><a href="{{ route('associado.show', $conta->titular) }}">{{ $conta->oTitular->nome }}</a></td>
                     <td><a href="{{ route('avalista.show', $conta->avalista_id) }}">{{ $conta->avalista->nome }}</a></td>
@@ -48,7 +50,7 @@
                 </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">Não foram encontradas contas.</td>
+                        <td colspan="6" class="text-center">Não foram encontradas contas.</td>
                     </tr>
                 @endforelse
               </tbody>

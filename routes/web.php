@@ -6,7 +6,7 @@ use App\Http\Controllers\ContaController;
 use App\Http\Controllers\AvalistaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AssociadoController;
-use App\Http\Controllers\CategoriaController;
+// use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\MovimentoController;
 
 Route::view('/', 'app.welcome');
@@ -64,14 +64,14 @@ Route::group(['middleware' => ['auth']], function() {
         Route::delete('/{id}', [MovimentoController::class, 'destroy'])->name('destroy');
     });
 
-    Route::group(['prefix' => 'categoria', 'as' => 'categoria.'], function() {
-        Route::get('/', [CategoriaController::class, 'index'])->name('index');
-        Route::get('/create', [CategoriaController::class, 'create'])->name('create');
-        Route::post('/', [CategoriaController::class, 'store'])->name('store');
-        Route::get('/{categoria}', [CategoriaController::class, 'show'])->name('show');
-        Route::get('/{categoria}/edit', [CategoriaController::class, 'edit'])->name('edit');
-        Route::put('/{categoria}', [CategoriaController::class, 'update'])->name('update');
-    });
+    // Route::group(['prefix' => 'categoria', 'as' => 'categoria.'], function() {
+    //     Route::get('/', [CategoriaController::class, 'index'])->name('index');
+    //     Route::get('/create', [CategoriaController::class, 'create'])->name('create');
+    //     Route::post('/', [CategoriaController::class, 'store'])->name('store');
+    //     Route::get('/{categoria}', [CategoriaController::class, 'show'])->name('show');
+    //     Route::get('/{categoria}/edit', [CategoriaController::class, 'edit'])->name('edit');
+    //     Route::put('/{categoria}', [CategoriaController::class, 'update'])->name('update');
+    // });
 });
 
 require __DIR__.'/auth.php';

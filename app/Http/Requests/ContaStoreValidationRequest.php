@@ -25,9 +25,17 @@ class ContaStoreValidationRequest extends FormRequest
     {
         return [
             'numero_conta' => 'bail|required|string|min:11|max:11|unique:contas,numero_conta',
-            'data_abertura' => 'bail|required|date|after:1990-01-01',
+            'saldo' => 'bail|required|numeric|min:5000',
+            // 'data_abertura' => 'bail|required|date|after:1990-01-01',
             'titular' => 'bail|required|integer|exists:associados,id',
             'avalista_id' => 'bail|required|integer|exists:avalistas,id',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'saldo.min' => 'O valor mínimo de saldo inicial é de 5.000',
         ];
     }
 

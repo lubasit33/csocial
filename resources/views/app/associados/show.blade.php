@@ -124,6 +124,7 @@
                 <table class="table">
                   <thead class=" text-primary">
                     <th>Número da Conta</th>
+                    <th>Saldo da Conta</th>
                     <th>Data de Abertura</th>
                     <th>Avalista</th>
                     {{-- <th>Ações</th> --}}
@@ -132,6 +133,7 @@
                     @forelse ($associado->contas as $conta)
                     <tr>
                         <td><a href="{{ route('conta.show', $conta->id) }}">{{ $conta->numero_conta }}</a></td>
+                        <td>{{ $conta->saldo() }}</td>
                         <td>{{ $conta->dataAbertura() }}</td>
                         <td><a href="{{ route('avalista.show', $conta->avalista_id) }}">{{ $conta->avalista->nome }}</a></td>
                         {{-- <td>
@@ -142,7 +144,7 @@
                     </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center">{{ ucwords($associado->nome) }} não tem contas ainda.</td>
+                            <td colspan="6" class="text-center">{{ ucwords($associado->nome) }} não tem contas ainda.</td>
                         </tr>
                     @endforelse
                   </tbody>
